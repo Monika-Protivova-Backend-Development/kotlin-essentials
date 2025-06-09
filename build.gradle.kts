@@ -6,7 +6,7 @@ group = "com.motycka.edu"
 version = "0.0.1"
 
 kotlin {
-    jvmToolchain(23)
+    jvmToolchain(21)
 }
 
 repositories {
