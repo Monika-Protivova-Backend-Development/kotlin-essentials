@@ -27,7 +27,7 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        cache-read-only: true
+        cache-disabled: true
 
     - name: Run Lesson 04 Tests
       run: ./gradlew testLesson04
