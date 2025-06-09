@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0eda51b-942b-48c3-8605-adca385ad55e" name="Changes" comment="initial" />
+    <list default="true" id="a0eda51b-942b-48c3-8605-adca385ad55e" name="Changes" comment="initial">
+      <change afterPath="$PROJECT_DIR$/git-github-instructions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GITHUB.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,11 +100,10 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "android.gradle.sync.needed": "true",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/monikaprotivova/IdeaProjects/HarbourSpace/Backend Development in Kotlin/kotlin-essentials/src/main/resources",
+    "last_opened_file_path": "/Users/monikaprotivova/IdeaProjects/HarbourSpace/Backend Development in Kotlin/kotlin-essentials",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -111,9 +115,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/motycka/edu/lesson04" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assignments/lesson04" />
@@ -227,7 +231,7 @@
       <workItem from="1749386967857" duration="6217000" />
       <workItem from="1749443519712" duration="2218000" />
       <workItem from="1749445845825" duration="2487000" />
-      <workItem from="1749448559568" duration="1000" />
+      <workItem from="1749448559568" duration="2579000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -293,7 +297,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749448297281</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="initial">
+      <option name="closed" value="true" />
+      <created>1749448579847</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1749448579847</updated>
+    </task>
+    <task id="LOCAL-00010" summary="initial">
+      <option name="closed" value="true" />
+      <created>1749448704516</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749448704516</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

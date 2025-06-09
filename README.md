@@ -5,7 +5,7 @@ Each lesson contains a set of tasks that cover essential Kotlin concepts, allowi
 
 To complete the tasks, you will need to implement the required functionality in Kotlin and run the tests provided in each lesson.
 
-For me to grade you, you will need to commit and push your solutions to GitHub. [See instructions how to do that](./GITHUB/md).
+For me to grade you, you will need to commit and push your solutions to GitHub. [See instructions how to do that](./git-github-instructions.md).
 
 ## Assignments
 
