@@ -13,6 +13,17 @@ const val MOCHA = "Mocha"
 const val FLAT_WHITE = "Flat White"
 const val AMERICANO = "Americano"
 
+/*
+    1. Create a list to store coffee menu items
+    2. Initialize the list with constants defined above
+    3. Define a mutable map to store orders, use: mutableMapOf<Int, List<String>>()
+    4. Print the coffee menu items
+    5. Create order1 with, 1x ESPRESSO, 2x CAPPUCCINO, and 1x AMERICANO
+    6. Add order 1 to orders map
+    7. Create order2 with, 1x ESPRESSO, 1x DOUBLE_ESPRESSO, and 1x FLAT_WHITE
+    8. Add order 2 to orders map
+    9. Print the orders placed, uncomment the println statement at the end
+ */
 val coffeeMenu = listOf(
     ESPRESSO,
     DOUBLE_ESPRESSO,
@@ -24,18 +35,12 @@ val coffeeMenu = listOf(
     AMERICANO
 )
 
-
-
-fun main() {
-    /*
-     List to store orders
-     */
+fun collections() {
     val orders = mutableMapOf<Int, List<String>>()
 
     println("\nWelcome to the Coffee Shop! Here is our menu:")
     coffeeMenu.forEach { println(it) }
 
-    // Order 1x Espresso, 2x Cappuccino, and 1x Americano
     val order1 = listOf(
         ESPRESSO,
         CAPPUCCINO,
@@ -43,9 +48,8 @@ fun main() {
         AMERICANO,
     )
 
-    orders.put(1, order1) // Using plus to add a new entry to the map
+    orders.put(1, order1)
 
-    // Order 1x Espresso, 1x Double Espresso, and 1x Flat White
     val order2 = listOf(
         ESPRESSO,
         DOUBLE_ESPRESSO,
@@ -58,4 +62,8 @@ fun main() {
     orders.forEach {
         println("Order ID: ${it.key}, Items: ${it.value}")
     }
+}
+
+fun main() {
+    collections()
 }

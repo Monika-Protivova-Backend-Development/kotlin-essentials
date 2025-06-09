@@ -1,10 +1,6 @@
 package com.motycka.edu.lesson02
 
 
-fun main() {
-    evaluate(2.4, 3.6)
-}
-
 fun evaluate(a: Double, b: Double) {
 
     val sum = a + b
@@ -28,4 +24,8 @@ fun evaluate(a: Double, b: Double) {
     println("A is Less or Equal: $aIsLessOrEqual")
     println("Both are above zero: $bothIsAboveZero")
     println("Either is above or equal to zero: $eitherIsAboveOrEqualZero")
+}
+
+fun main() {
+    evaluate(2.4, 3.6)
 }

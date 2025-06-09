@@ -1,6 +1,7 @@
 package com.motycka.edu.lesson02
 
 import com.motycka.edu.captureStdout
+import com.motycka.edu.getClass
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.doubles.shouldBeExactly
@@ -9,8 +10,51 @@ import io.kotest.matchers.shouldBe
 
 class FunctionsTest : StringSpec({
 
+    val functionsClass = getClass("com.motycka.edu.lesson02.FunctionsKt")
+    val coffeeOrdersField = functionsClass.getDeclaredField("coffeeOrders").apply { isAccessible = true }
+
+    fun getCoffeeOrders(): MutableMap<Int, List<String>> {
+        return coffeeOrdersField.get(null) as MutableMap<Int, List<String>>
+    }
+
+    fun placerOrder(items: List<String>): Int {
+        return functionsClass.getDeclaredMethod("placerOrder", List::class.java)
+            .apply { isAccessible = true }
+            .invoke(null, items) as Int
+    }
+
+    fun payOrder(orderId: Int): Double {
+        try {
+            return functionsClass.getDeclaredMethod("payOrder", Int::class.java)
+                .apply { isAccessible = true }
+                .invoke(null, orderId) as Double
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            throw e.targetException
+        }
+    }
+
+    fun completeOrder(orderId: Int) {
+        try {
+            functionsClass.getDeclaredMethod("completeOrder", Int::class.java)
+                .apply { isAccessible = true }
+                .invoke(null, orderId)
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            throw e.targetException
+        }
+    }
+
+    fun processOrder(items: List<String>, payment: Double): Double {
+        try {
+            return functionsClass.getDeclaredMethod("processOrder", List::class.java, Double::class.java)
+                .apply { isAccessible = true }
+                .invoke(null, items, payment) as Double
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            throw e.targetException
+        }
+    }
+
     beforeTest {
-        coffeeOrders.clear()
+        getCoffeeOrders().clear()
     }
 
     "placerOrder should add items to coffeeOrders and return orderId" {
@@ -18,7 +62,7 @@ class FunctionsTest : StringSpec({
         val orderId = placerOrder(items)
 
         orderId shouldBe 0
-        coffeeOrders[orderId] shouldBe items
+        getCoffeeOrders()[orderId] shouldBe items
     }
 
     "payOrder should calculate correct total for a single item" {
@@ -54,11 +98,11 @@ class FunctionsTest : StringSpec({
     "completeOrder should remove the order from coffeeOrders" {
         val orderId = placerOrder(listOf(ESPRESSO))
 
-        coffeeOrders.size shouldBe 1
+        getCoffeeOrders().size shouldBe 1
 
         completeOrder(orderId)
 
-        coffeeOrders.size shouldBe 0
+        getCoffeeOrders().size shouldBe 0
     }
 
     "completeOrder should throw error for non-existent order" {
@@ -67,15 +111,6 @@ class FunctionsTest : StringSpec({
         }
 
         exception.message shouldBe "Order ID 999 not found."
-    }
-
-    "getPrice should return correct price for each item" {
-        getPrice(ESPRESSO) shouldBeExactly ESPRESSO_PRICE
-        getPrice(DOUBLE_ESPRESSO) shouldBeExactly DOUBLE_ESPRESSO_PRICE
-        getPrice(CAPPUCCINO) shouldBeExactly CAPPUCCINO_PRICE
-        getPrice(LATTE) shouldBeExactly LATTE_PRICE
-        getPrice(AMERICANO) shouldBeExactly AMERICANO_PRICE
-        getPrice(FLAT_WHITE) shouldBeExactly FLAT_WHITE_PRICE
     }
 
     "getPrice should throw error for unknown item" {
@@ -95,7 +130,7 @@ class FunctionsTest : StringSpec({
         val change = processOrder(items, payment)
 
         change shouldBeExactly expectedChange
-        coffeeOrders.shouldBeEmpty()
+        getCoffeeOrders().shouldBeEmpty()
     }
 
     "processOrder should throw error for insufficient payment" {

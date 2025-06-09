@@ -6,7 +6,7 @@ fun main() {
     // You can write code here to try the functions
     processOrder(listOf(ESPRESSO, CAPPUCCINO, CAPPUCCINO, AMERICANO), 20.0)
     processOrder(listOf(ESPRESSO, FLAT_WHITE, AMERICANO), 10.0)
-//    processOrder(listOf(ESPRESSO, ESPRESSO, DOUBLE_ESPRESSO), 5.0)
+    // processOrder(listOf(ESPRESSO, ESPRESSO, DOUBLE_ESPRESSO), 5.0) // will fail due to insufficient payment
 }
 
 /* Implement the functions below */

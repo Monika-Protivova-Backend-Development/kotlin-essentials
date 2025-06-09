@@ -1,11 +1,19 @@
 package com.motycka.edu.lesson03
 
-import io.kotest.assertions.throwables.shouldThrow
+import com.motycka.edu.callMethod
+import com.motycka.edu.getClass
+import com.motycka.edu.getPropertyValue
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import java.lang.reflect.Constructor
 import java.time.LocalDate
 
 class EncapsulationTest : StringSpec({
+
+    fun createAssignment(dueDate: LocalDate, assignee: String): Any {
+        val constructor: Constructor<*> = getClass("com.motycka.edu.lesson03.Assignment").getDeclaredConstructor(LocalDate::class.java, String::class.java)
+        return constructor.newInstance(dueDate, assignee)
+    }
 
     "Assignment constructor should initialize properties correctly" {
         // given
@@ -13,20 +21,20 @@ class EncapsulationTest : StringSpec({
         val assignee = "John Doe"
 
         // when
-        val assignment = Assignment(dueDate, assignee)
+        val assignment = createAssignment(dueDate, assignee)
 
         // then
-        assignment.dueDate shouldBe dueDate
-        assignment.assignee shouldBe assignee
-        assignment.getFinalGrade() shouldBe null
+        assignment.getPropertyValue("dueDate") shouldBe dueDate
+        assignment.getPropertyValue("assignee") shouldBe assignee
+        assignment.callMethod("getFinalGrade") shouldBe null
     }
 
     "getFinalGrade should return null when grade is not set" {
         // given
-        val assignment = Assignment(LocalDate.now(), "Jane Smith")
+        val assignment = createAssignment(LocalDate.now(), "Jane Smith")
 
         // when
-        val grade = assignment.getFinalGrade()
+        val grade = assignment.callMethod("getFinalGrade")
 
         // then
         grade shouldBe null
@@ -34,65 +42,77 @@ class EncapsulationTest : StringSpec({
 
     "setFinalGrade should set a valid grade" {
         // given
-        val assignment = Assignment(LocalDate.now(), "Alice Johnson")
+        val assignment = createAssignment(LocalDate.now(), "Alice Johnson")
         val validGrade = 85
 
         // when
-        assignment.setFinalGrade(validGrade)
+        assignment.callMethod("setFinalGrade", validGrade)
 
         // then
-        assignment.getFinalGrade() shouldBe validGrade
+        assignment.callMethod("getFinalGrade") shouldBe validGrade
     }
 
     "setFinalGrade should accept minimum valid grade (0)" {
         // given
-        val assignment = Assignment(LocalDate.now(), "Bob Brown")
+        val assignment = createAssignment(LocalDate.now(), "Bob Brown")
         val minGrade = 0
 
         // when
-        assignment.setFinalGrade(minGrade)
+        assignment.callMethod("setFinalGrade", minGrade)
 
         // then
-        assignment.getFinalGrade() shouldBe minGrade
+        assignment.callMethod("getFinalGrade") shouldBe minGrade
     }
 
     "setFinalGrade should accept maximum valid grade (100)" {
         // given
-        val assignment = Assignment(LocalDate.now(), "Charlie Davis")
+        val assignment = createAssignment(LocalDate.now(), "Charlie Davis")
         val maxGrade = 100
 
         // when
-        assignment.setFinalGrade(maxGrade)
+        assignment.callMethod("setFinalGrade", maxGrade)
 
         // then
-        assignment.getFinalGrade() shouldBe maxGrade
+        assignment.callMethod("getFinalGrade") shouldBe maxGrade
     }
 
     "setFinalGrade should throw exception for grade below 0" {
         // given
-        val assignment = Assignment(LocalDate.now(), "David Wilson")
+        val assignment = createAssignment(LocalDate.now(), "David Wilson")
         val invalidGrade = -1
 
         // when/then
-        val exception = shouldThrow<IllegalArgumentException> {
-            assignment.setFinalGrade(invalidGrade)
+        try {
+            assignment.callMethod("setFinalGrade", invalidGrade)
+            throw AssertionError("Expected IllegalArgumentException was not thrown")
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            // Extract the original exception
+            val cause = e.cause
+            if (cause is IllegalArgumentException) {
+                cause.message shouldBe "Final grade must be between 0 and 100"
+            } else {
+                throw AssertionError("Expected IllegalArgumentException but got ${cause?.javaClass?.name}")
+            }
         }
-
-        // then
-        exception.message shouldBe "Final grade must be between 0 and 100"
     }
 
     "setFinalGrade should throw exception for grade above 100" {
         // given
-        val assignment = Assignment(LocalDate.now(), "Eva Martinez")
+        val assignment = createAssignment(LocalDate.now(), "Eva Martinez")
         val invalidGrade = 101
 
         // when/then
-        val exception = shouldThrow<IllegalArgumentException> {
-            assignment.setFinalGrade(invalidGrade)
+        try {
+            assignment.callMethod("setFinalGrade", invalidGrade)
+            throw AssertionError("Expected IllegalArgumentException was not thrown")
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            // Extract the original exception
+            val cause = e.cause
+            if (cause is IllegalArgumentException) {
+                cause.message shouldBe "Final grade must be between 0 and 100"
+            } else {
+                throw AssertionError("Expected IllegalArgumentException but got ${cause?.javaClass?.name}")
+            }
         }
-
-        // then
-        exception.message shouldBe "Final grade must be between 0 and 100"
     }
 })
