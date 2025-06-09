@@ -22,8 +22,8 @@ jobs:
       with:
         cache-disabled: true
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build with Gradle (excluding tests)
+      run: ./gradlew build -x test
 
     - name: Run all tests
       run: ./gradlew test
