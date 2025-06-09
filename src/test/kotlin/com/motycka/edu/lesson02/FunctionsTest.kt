@@ -113,14 +113,6 @@ class FunctionsTest : StringSpec({
         exception.message shouldBe "Order ID 999 not found."
     }
 
-    "getPrice should throw error for unknown item" {
-        val exception = shouldThrow<IllegalStateException> {
-            getPrice("Unknown Coffee")
-        }
-
-        exception.message shouldBe "Unknown Coffee is not on the menu!"
-    }
-
     "processOrder should calculate correct change" {
         val items = listOf(ESPRESSO, CAPPUCCINO)
         val payment = 10.0

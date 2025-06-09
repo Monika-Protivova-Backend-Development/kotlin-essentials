@@ -7,19 +7,15 @@ import io.kotest.matchers.string.shouldContain
 class MainTest : StringSpec({
 
     "main function should print 'Hello, Kotlin!'" {
-        val output = captureStdout {
+        captureStdout {
             main(emptyArray())
-        }
-
-        output shouldContain "Hello, Kotlin!"
+        } shouldContain "Hello, Kotlin!"
     }
 
     "main function should print program arguments" {
         val args = arrayOf("arg1", "arg2", "arg3")
-        val output = captureStdout {
+        captureStdout {
             main(args)
-        }
-
-        output shouldContain "Program arguments: arg1, arg2, arg3"
+        } shouldContain "Program arguments: arg1, arg2, arg3"
     }
 })

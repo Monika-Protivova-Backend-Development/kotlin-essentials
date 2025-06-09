@@ -1,18 +1,10 @@
-package model
+package com.motycka.edu.lesson03.model
 
-import com.motycka.edu.lesson03.model.Ellipse
-import com.motycka.edu.lesson03.model.Shape2D
-import com.motycka.edu.lesson03.model.Sphere
 import kotlin.math.PI
 
-class Circle(
-    override val radius: Double
-): Shape2D, Ellipse {
+/*
+ Implement Circle class that implements Shape2D and Ellipse interfaces.
 
-    override fun area() = PI * radius * radius
-
-    override fun perimeter() = 2 * PI * radius
-
-    override fun to3D() = Sphere(radius)
-
-}
+    - It should have a constructor that takes one parameter for the radius.
+    - It should override all methods from Shape2D and Ellipse interfaces.
+ */

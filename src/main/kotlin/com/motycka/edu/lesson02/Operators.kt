@@ -3,17 +3,17 @@ package com.motycka.edu.lesson02
 
 fun evaluate(a: Double, b: Double) {
 
-    val sum = a + b
-    val difference = a - b
-    val product = a * b
+    val sum = TODO()
+    val difference = TODO()
+    val product = TODO()
 
-    val isEqual = a == b
-    val isNotEqual = a != b
-    val aIsGreater = a > b
-    val aIsLessOrEqual = a <= b
+    val isEqual = TODO()
+    val isNotEqual = TODO()
+    val aIsGreater = TODO()
+    val aIsLessOrEqual = TODO()
 
-    val bothIsAboveZero = a > 0 && b > 0
-    val eitherIsAboveOrEqualZero = a >= 0 || b >= 0
+    val bothIsAboveZero = TODO()
+    val eitherIsAboveOrEqualZero = TODO()
 
     println("Sum: $sum")
     println("Difference: $difference")

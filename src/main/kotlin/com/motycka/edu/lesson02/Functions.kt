@@ -12,57 +12,19 @@ fun main() {
 /* Implement the functions below */
 
 fun processOrder(items: List<String>, payment: Double): Double {
-    val orderId = placerOrder(items)
-    val totalToPay = payOrder(orderId)
+    val orderId = TODO("call placerOrder(items)")
+    val totalToPay = TODO("call payOrder(orderId)")
 
-    val change = if (payment <= totalToPay) {
-        error("Insufficient payment. Total to pay is $totalToPay, but received $payment.")
-    } else {
-        val change = payment - totalToPay
-        println("Payment successful. Total paid: $payment, Total to pay: $totalToPay, change: $change")
-        change
-    }
+    val change = TODO("calculate change by subtracting totalToPay from payment")
 
-    completeOrder(orderId)
+    // TODO call completeOrder(orderId)
 
     return change
 }
 
-fun placerOrder(items: List<String>): Int {
-    val orderId = coffeeOrders.size
-    coffeeOrders.put(orderId, items)
-    return orderId
-}
+// TODO Implement placerOrder(items: List<String>): Int
 
-fun payOrder(orderId: Int): Double {
-    val items = coffeeOrders[orderId] ?: error("Order ID $orderId not found.")
+// TODO Implement payOrder(orderId: Int): Double
 
-    val prices = items.map {
-        getPrice(it)
-    }
+// TODO Implement completeOrder(orderId: Int)
 
-    val discount = if (items.size > 3) {
-        prices.min()
-    } else {
-        0.0
-    }
-
-    return prices.sum() - discount
-}
-
-fun completeOrder(orderId: Int) {
-    coffeeOrders[orderId] ?: error("Order ID $orderId not found.")
-    coffeeOrders.remove(orderId)
-}
-
-fun getPrice(item: String): Double {
-    return when (item) {
-        ESPRESSO -> ESPRESSO_PRICE
-        DOUBLE_ESPRESSO -> DOUBLE_ESPRESSO_PRICE
-        CAPPUCCINO -> CAPPUCCINO_PRICE
-        LATTE -> LATTE_PRICE
-        AMERICANO -> AMERICANO_PRICE
-        FLAT_WHITE -> FLAT_WHITE_PRICE
-        else -> error("$item is not on the menu!")
-    }
-}

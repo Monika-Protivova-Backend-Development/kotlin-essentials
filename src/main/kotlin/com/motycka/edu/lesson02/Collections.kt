@@ -24,39 +24,16 @@ const val AMERICANO = "Americano"
     8. Add order 2 to orders map
     9. Print the orders placed, uncomment the println statement at the end
  */
-val coffeeMenu = listOf(
-    ESPRESSO,
-    DOUBLE_ESPRESSO,
-    CAPPUCCINO,
-    LATTE,
-    MACCHIATO,
-    MOCHA,
-    FLAT_WHITE,
-    AMERICANO
-)
+val coffeeMenu: List<String> = TODO("Initialize the list")
 
 fun collections() {
-    val orders = mutableMapOf<Int, List<String>>()
+    val orders: Map<Int, List<String>> = TODO("Define a mutable map to store orders")
 
     println("\nWelcome to the Coffee Shop! Here is our menu:")
-    coffeeMenu.forEach { println(it) }
 
-    val order1 = listOf(
-        ESPRESSO,
-        CAPPUCCINO,
-        CAPPUCCINO,
-        AMERICANO,
-    )
+    // TODO print the coffee menu items
 
-    orders.put(1, order1)
-
-    val order2 = listOf(
-        ESPRESSO,
-        DOUBLE_ESPRESSO,
-        FLAT_WHITE,
-    )
-
-    orders.put(2, order2)
+    // TODO create orders
 
     println("\nOrders placed:")
     orders.forEach {
