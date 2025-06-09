@@ -22,8 +22,13 @@ jobs:
       with:
         cache-disabled: true
 
-    - name: Build with Gradle (excluding tests)
-      run: ./gradlew build -x test
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Conditionally set SKIP_TESTS for main repo
+      if: github.repository == 'Monika-Protivova-Backend-Development/kotlin-essentials'
+      run: echo "SKIP_TESTS=true" >> $GITHUB_ENV
 
     - name: Run all tests
+      if: ${{ github.ref != 'refs/heads/main' || env.SKIP_TESTS != 'true' }}
       run: ./gradlew test
